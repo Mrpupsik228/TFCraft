@@ -4,13 +4,13 @@ project(TFCraft VERSION 0.0.1)
 find_package(OpenGL REQUIRED)
 
 set(FASTNOISE2_BUILD_SHARED ON)
-add_subdirectory(TFCraft-libs/FastNoise2)
+add_subdirectory(TFCraft-libs/FastNoise)
 add_subdirectory(TFCraft-libs/glfw-3.4)
 
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/glew-2.1.0/include
-    ${PROJECT_SOURCE_DIR}/TFCraft-libs/FastNoise2/include
+    ${PROJECT_SOURCE_DIR}/TFCraft-libs/FastNoise/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/glfw-3.4/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/glm-1.0.1
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/stb
@@ -20,7 +20,7 @@ include_directories(
 
 if(LINUX)
     link_libraries(
-        ${PROJECT_SOURCE_DIR}/build/TFCraft-libs/FastNoise2/src/libFastNoise.a
+        ${PROJECT_SOURCE_DIR}/build/TFCraft-libs/FastNoise/src/libFastNoise.a
         ${PROJECT_SOURCE_DIR}/build/TFCraft-libs/glfw-3.4/src/libglfw3.a
         )
 endif()
