@@ -7,9 +7,8 @@ set(FASTNOISE2_BUILD_SHARED ON)
 add_subdirectory(TFCraft-libs/FastNoise2)
 add_subdirectory(TFCraft-libs/glfw-3.4)
 
-
 include_directories(
-    ${PROJECT_SOURCE_DIR}/TFCraft-libs/glew-2.1.0/include
+    ${PROJECT_SOURCE_DIR}/TFCraft-libs/glew/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/FastNoise2/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/glfw-3.4/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/glm-1.0.1
@@ -18,7 +17,7 @@ include_directories(
 
 add_custom_target(build_lib ALL
     COMMAND make
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/TFCraft-libs/glew-2.1.0
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/TFCraft-libs/glew
 )
 
 
@@ -47,5 +46,3 @@ target_link_libraries(TFCraft
     glfw
     GLEW
 )
-
-target_compile_definitions(TFCraft PRIVATE GLEW_STATIC)

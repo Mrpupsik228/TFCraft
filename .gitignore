@@ -1,7 +1,7 @@
 build
 .vscode
-/TFCraft-libs/glew-2.1.0/lib
-/TFCraft-libs/glew-2.1.0/bin
-/TFCraft-libs/glew-2.1.0/tmp
-/TFCraft-libs/glew-2.1.0/glew.pc
+/TFCraft-libs/glew/lib
+/TFCraft-libs/glew/bin
+/TFCraft-libs/glew/tmp
+/TFCraft-libs/glew/glew.pc
 TFCraft-libs/FastNoise
