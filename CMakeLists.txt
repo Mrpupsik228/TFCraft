@@ -8,18 +8,12 @@ add_subdirectory(TFCraft-libs/FastNoise2)
 add_subdirectory(TFCraft-libs/glfw-3.4)
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}/TFCraft-libs/glew/include
+    ${PROJECT_SOURCE_DIR}/TFCraft-libs/glad/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/FastNoise2/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/glfw-3.4/include
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/glm-1.0.1
     ${PROJECT_SOURCE_DIR}/TFCraft-libs/stb
 )
-
-add_custom_target(build_lib ALL
-    COMMAND make
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/TFCraft-libs/glew
-)
-
 
 if(LINUX)
     link_libraries(
@@ -31,6 +25,8 @@ endif()
 
 add_executable(
     TFCraft
+    ${PROJECT_SOURCE_DIR}/src/glad.c
+
     ${PROJECT_SOURCE_DIR}/src/engine/texture.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/engine.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/shader.cpp
@@ -46,3 +42,4 @@ target_link_libraries(TFCraft
     glfw
     GLEW
 )
+add_compile_definitions(TFCraft GLEW_STATIC)

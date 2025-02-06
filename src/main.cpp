@@ -131,7 +131,7 @@ public:
 				
 				for (size_t y = 0; y < glm::clamp((int64_t)(height - position.y * Chunk::HEIGHT), (int64_t)0, (int64_t)Chunk::HEIGHT); y++) {
 					uint8_t block = 1;
-
+					
 					size_t worldY = y + position.y * Chunk::HEIGHT;
 
 					// Bedrock floor case
@@ -418,6 +418,7 @@ public:
 		Noise noise;
 
 		noise.seed = seed;
+		noise.frequency = 0.0045;
 		
 		size_t* heightMap = new size_t[Chunk::WIDTH * Chunk::WIDTH];
 
@@ -431,10 +432,14 @@ public:
 						float mountainHeight = glm::smoothstep(0.3f, 0.8f, noise.GetPerlin(worldX, worldZ) * 0.5f + 0.5f) * 64.0f;
 						mountainHeight += glm::smoothstep(0.3f, 0.8f, noise.GetPerlin(worldX * 5.0f, worldZ * 5.0f) * 0.5f + 0.5f) * 8.0f;
 						mountainHeight += 4.0f;
+						
+						noise.frequency = 0.0025;
 
 						float plainHeight = glm::smoothstep(0.3f, 0.8f, noise.GetPerlin(worldX * 4.0f, worldZ * 4.0f) * 0.5f + 0.5f) * 4.0f;
 						plainHeight += glm::smoothstep(0.3f, 0.8f, noise.GetPerlin(worldX, worldZ) * 0.5f + 0.5f) * 13.0f;
 						plainHeight += 4.0f;
+
+						noise.frequency = 0.0045;
 
 						float height = glm::mix(
 							plainHeight,

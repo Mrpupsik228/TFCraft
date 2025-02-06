@@ -4,7 +4,7 @@
 #include <iostream>
 #include <math.h>
 
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include <stb_image.h>
 
 float Window::width = 0.0f, Window::height = 0.0f;
@@ -29,7 +29,7 @@ void Window::create(int width, int height, const char* title) {
 
 	glfwMakeContextCurrent(Window::handle);
 
-	assert(glewInit() == GLEW_OK);
+	assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
 	glfwSwapInterval(0);
 	stbi_set_flip_vertically_on_load(true);

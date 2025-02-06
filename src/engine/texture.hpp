@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GL/glew.h>
+#include <glad/glad.h>
 
 struct Texture {
 	static GLuint loadFromFile(const char* location, GLuint filter, GLuint wrap);
