@@ -36,6 +36,7 @@ add_executable(TFCraft
     ${PROJECT_SOURCE_DIR}/src/engine/io/window.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/io/logger.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/engine.cpp
+    ${PROJECT_SOURCE_DIR}/src/scenes.cpp
     ${PROJECT_SOURCE_DIR}/src/main.cpp
     ${PROJECT_SOURCE_DIR}/src/glad.c
 )
