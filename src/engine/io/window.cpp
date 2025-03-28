@@ -1,9 +1,9 @@
-#include "window.h"
+#include "window.hpp"
 #include "stb_image.h"
 
 #define HWND static_cast<GLFWwindow*>(Window::handle)
 
-namespace Brainstorm {
+namespace Engine {
     bool Window::created = false, Window::closed = false;
 
     float Window::aspect;
@@ -52,6 +52,9 @@ namespace Brainstorm {
             return;
         }
 
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
         stbi_set_flip_vertically_on_load(true);
         Logger::info("Brainstorm initialized.\n");
 
@@ -64,10 +67,8 @@ namespace Brainstorm {
 
         glfwSetFramebufferSizeCallback(HWND, [](GLFWwindow* window, int width, int height) -> void {
             ViewportBounds bounds = Window::viewportBounds;
-            glViewport(
-                static_cast<GLint>(bounds.offset.x * width), static_cast<GLint>(bounds.offset.y * height),
-                static_cast<GLint>(bounds.scale.x * width), static_cast<GLint>(bounds.scale.y * height)
-            );
+            
+            //TODO: Viewport
 
             Window::aspect = static_cast<float>(width) / static_cast<float>(height);
             
@@ -169,16 +170,6 @@ namespace Brainstorm {
 
         glfwMakeContextCurrent(HWND);
         Logger::info("Window created.", HWND);
-
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-            Logger::error("Could not initialize GLEW.");
-            Window::close();
-
-            return;
-        }
-
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
 	}
     void Window::close() {
         if (Window::closed) {
@@ -200,7 +191,7 @@ namespace Brainstorm {
 
     void Window::pollEvents() {
         glfwPollEvents();
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
         Window::currentFrame++;
 
         Window::mouseScrollCapture = Window::mouseScroll;

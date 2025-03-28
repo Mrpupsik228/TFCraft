@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Brainstorm {
+namespace Engine {
     enum class KeyCode : int {
         UNKNOWN = -1,
         SPACE = 32,

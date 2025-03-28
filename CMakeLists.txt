@@ -18,27 +18,27 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/libs/glm
     ${PROJECT_SOURCE_DIR}/libs/stb
 )
-
-link_libraries(
-    ${PROJECT_SOURCE_DIR}/build/libs/FastNoise2/src/libFastNoise.a
-    ${PROJECT_SOURCE_DIR}/build/libs/glfw/src/libglfw3.a
-    ${PROJECT_SOURCE_DIR}/build/libs/glm/glm/libglm.a
-)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    link_libraries(
+        ${PROJECT_SOURCE_DIR}/Debug/libs/FastNoise2/src/libFastNoise.a
+        ${PROJECT_SOURCE_DIR}/Debug/libs/glfw/src/libglfw3.a
+        ${PROJECT_SOURCE_DIR}/Debug/libs/glm/glm/libglm.a
+    )
+endif()
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    link_libraries(
+        ${PROJECT_SOURCE_DIR}/Realese/libs/FastNoise2/src/libFastNoise.a
+        ${PROJECT_SOURCE_DIR}/Realese/libs/glfw/src/libglfw3.a
+        ${PROJECT_SOURCE_DIR}/Realese/libs/glm/glm/libglm.a
+    )
+endif()
 
 add_executable(TFCraft
-    ${PROJECT_SOURCE_DIR}/src/engine/graphics/framebuffer.cpp
-    ${PROJECT_SOURCE_DIR}/src/engine/graphics/texture.cpp
-    ${PROJECT_SOURCE_DIR}/src/engine/graphics/shader.cpp
-    ${PROJECT_SOURCE_DIR}/src/engine/graphics/mesh.cpp
-    ${PROJECT_SOURCE_DIR}/src/engine/util/physics.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/util/maths.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/util/time.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/io/window.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/io/logger.cpp
-    ${PROJECT_SOURCE_DIR}/src/engine/engine.cpp
-    ${PROJECT_SOURCE_DIR}/src/scenes.cpp
     ${PROJECT_SOURCE_DIR}/src/main.cpp
-    ${PROJECT_SOURCE_DIR}/src/glad.c
 )
 
 target_link_libraries(TFCraft

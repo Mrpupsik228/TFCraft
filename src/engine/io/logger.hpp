@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Brainstorm {
+namespace Engine {
 	class Logger {
 	public:
 		static void debug(const char* format, ...);
