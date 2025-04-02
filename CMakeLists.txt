@@ -13,8 +13,8 @@ add_subdirectory(libs/glm)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/libs/FastNoise2/include
-    ${PROJECT_SOURCE_DIR}/libs/glad/include
     ${PROJECT_SOURCE_DIR}/libs/glfw/include
+    ${PROJECT_SOURCE_DIR}/libs/glad/include
     ${PROJECT_SOURCE_DIR}/libs/glm
     ${PROJECT_SOURCE_DIR}/libs/stb
 )
@@ -34,11 +34,17 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
 endif()
 
 add_executable(TFCraft
-    ${PROJECT_SOURCE_DIR}/src/engine/util/maths.cpp
-    ${PROJECT_SOURCE_DIR}/src/engine/util/time.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/io/window.cpp
     ${PROJECT_SOURCE_DIR}/src/engine/io/logger.cpp
+    ${PROJECT_SOURCE_DIR}/src/engine/graphics/mesh.cpp
+    ${PROJECT_SOURCE_DIR}/src/engine/graphics/shader.cpp
+    ${PROJECT_SOURCE_DIR}/src/engine/graphics/texture.cpp
+    ${PROJECT_SOURCE_DIR}/src/engine/graphics/framebuffer.cpp
+    ${PROJECT_SOURCE_DIR}/src/engine/util/maths.cpp
+    ${PROJECT_SOURCE_DIR}/src/engine/util/time.cpp
+    ${PROJECT_SOURCE_DIR}/src/chunk.cpp
     ${PROJECT_SOURCE_DIR}/src/main.cpp
+    ${PROJECT_SOURCE_DIR}/src/glad.c
 )
 
 target_link_libraries(TFCraft

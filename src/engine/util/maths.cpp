@@ -1,4 +1,4 @@
-#include "maths.hpp"
+#include "maths.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Brainstorm {
